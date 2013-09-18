@@ -5,6 +5,8 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ALS | Login</title>
+<!-- Bootstrap -->
+<link href="bootstrap-css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
 <body>
 
@@ -37,6 +39,7 @@
 </div>
 
 <!-- Imports -->
-<jsp:include page="../utilities/imports.jsp"></jsp:include>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="bootstrap-js/bootstrap.min.js"></script>
 </body>
 </html>

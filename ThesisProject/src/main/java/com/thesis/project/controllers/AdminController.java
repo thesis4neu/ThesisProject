@@ -30,7 +30,7 @@ public class AdminController extends HttpServlet
     protected void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException,
         IOException
     {
-        RequestDispatcher rd = request.getRequestDispatcher( "WEB-INF/JSPs/body/admin_home.jsp" );
+        RequestDispatcher rd = request.getRequestDispatcher( "WEB-INF/JSPs/admin/body/admin_home.jsp" );
         rd.forward( request, response );
         return;
     }

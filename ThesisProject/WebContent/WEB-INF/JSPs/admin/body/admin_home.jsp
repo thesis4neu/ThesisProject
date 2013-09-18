@@ -11,6 +11,6 @@
 <body>
 
 <!-- Imports -->
-<jsp:include page="../utilities/imports.jsp"></jsp:include>
+<jsp:include page="../../utilities/imports.jsp"></jsp:include>
 </body>
 </html>
