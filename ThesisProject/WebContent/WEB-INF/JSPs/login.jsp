@@ -8,7 +8,7 @@
 <!-- Bootstrap -->
 <link href="bootstrap-css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
-<body>
+<body >
 
 <div class="hero-unit">
   <h1>Alternative Learning Center</h1>
@@ -25,8 +25,8 @@
   </div>
   <div class="modal-body">
     <form method="post" action="login" name="login_form">
-      <p><input type="text" class="span3" name="username" id="email" placeholder="Username"></p>
-      <p><input type="password" class="span3" name="password" placeholder="Password"></p>
+      <p><input type="text" class="span3" name="username" id="email" placeholder="Username" required></p>
+      <p><input type="password" class="span3" name="password" placeholder="Password" required ></p>
       <p><button type="submit" class="btn btn-primary">Sign in</button>
         <a href="#"> <span style="color: red" >Forgot Password? | Under Construction</span></a>
       </p>

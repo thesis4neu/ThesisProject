@@ -4,12 +4,16 @@
   <welcome-file-list>
     <welcome-file>login</welcome-file>
   </welcome-file-list>
+  
+  <!-- Database resources -->
   <resource-ref>
     <description>DB Connection</description>
     <res-ref-name>jdbc/THESIS</res-ref-name>
     <res-type>javax.sql.DataSource</res-type>
     <res-auth>Container</res-auth>
   </resource-ref>
+  
+  <!-- Servlet definitions -->
   <servlet>
     <display-name>LoginController</display-name>
     <servlet-name>LoginController</servlet-name>
@@ -19,6 +23,7 @@
     <servlet-name>LoginController</servlet-name>
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <display-name>AdminController</display-name>
     <servlet-name>AdminController</servlet-name>
@@ -27,5 +32,25 @@
   <servlet-mapping>
     <servlet-name>AdminController</servlet-name>
     <url-pattern>/admin</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>StudentController</display-name>
+    <servlet-name>StudentController</servlet-name>
+    <servlet-class>com.thesis.project.controllers.StudentController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StudentController</servlet-name>
+    <url-pattern>/student</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>TutorController</display-name>
+    <servlet-name>TutorController</servlet-name>
+    <servlet-class>com.thesis.project.controllers.TutorController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TutorController</servlet-name>
+    <url-pattern>/tutor</url-pattern>
   </servlet-mapping>
 </web-app>

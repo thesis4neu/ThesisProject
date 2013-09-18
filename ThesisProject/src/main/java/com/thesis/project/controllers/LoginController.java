@@ -89,6 +89,18 @@ public class LoginController extends HttpServlet
         {
             requestDispatcher = request.getRequestDispatcher( "admin" );
         }
+        else if( userType.equalsIgnoreCase( "student" ) )
+        {
+            requestDispatcher = request.getRequestDispatcher( "student" );
+        }
+        else if( userType.equalsIgnoreCase( "tutor" ) )
+        {
+            requestDispatcher = request.getRequestDispatcher( "tutor" );
+        }
+        else
+        {
+            requestDispatcher = request.getRequestDispatcher( "WEB-INF/JSPs/login.jsp" );
+        }
 
         requestDispatcher.forward( request, response );
         return;

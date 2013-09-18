@@ -14,18 +14,20 @@ rule "When the user logged in is an admin print something"
 
     when
         //conditions
-        $user : UsersModel( userType == "admin", usertype : userType )
+        $user : UsersModel( userType == "admin" || userType == "student" || userType == "tutor", usertype : userType )
     then
         //actions
         System.out.println( usertype );
 
 end
 
-rule "When the user logged in is any other print something"
+rule "When the user logged in is a student print something"
     //include attributes such as "salience" here...
     when
         //conditions
+        //$user : UserModel( userType == "student", usertype : userType)
     then
         //actions
+        //System.out.println( usertype );
 
 end

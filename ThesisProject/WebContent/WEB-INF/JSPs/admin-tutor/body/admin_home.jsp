@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<jsp:include page="../header/navigation_bar.jsp"></jsp:include>
+<jsp:include page="../header/admin_navigation_bar.jsp"></jsp:include>
 <title>ALS | Home</title>
 </head>
 <body>
