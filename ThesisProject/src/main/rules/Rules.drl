@@ -1,0 +1,31 @@
+//created on: Sep 17, 2013
+package com.thesis.project.rules
+
+//list any import classes here.
+import com.thesis.project.models.UsersModel
+
+
+//declare any global variables here
+
+
+
+
+rule "When the user logged in is an admin print something"
+
+    when
+        //conditions
+        $user : UsersModel( userType == "admin", usertype : userType )
+    then
+        //actions
+        System.out.println( usertype );
+
+end
+
+rule "When the user logged in is any other print something"
+    //include attributes such as "salience" here...
+    when
+        //conditions
+    then
+        //actions
+
+end
