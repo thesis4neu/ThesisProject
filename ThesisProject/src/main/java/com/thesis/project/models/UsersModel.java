@@ -30,6 +30,11 @@ public class UsersModel
     private String userType;
 
     /**
+     * if user does exist
+     */
+    private boolean exist;
+
+    /**
      * @return the userName
      */
     public String getUserName()
@@ -75,5 +80,21 @@ public class UsersModel
     public void setUserType( String userType )
     {
         this.userType = userType;
+    }
+
+    /**
+     * @return the exist
+     */
+    public boolean isExist()
+    {
+        return exist;
+    }
+
+    /**
+     * @param exist the exist to set
+     */
+    public void setExist( boolean exist )
+    {
+        this.exist = exist;
     }
 }

@@ -20,7 +20,12 @@ public class StudentController extends HttpServlet {
     protected void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException,
         IOException
     {
-		// TODO Auto-generated method stub
+        request.getSession().setAttribute( "username", request.getSession().getAttribute( "username" ) );
+        request.getSession().setAttribute( "username", request.getSession().getAttribute( "usertype" ) );
+
+        RequestDispatcher rd = request.getRequestDispatcher( "WEB-INF/JSPs/student/body/student_home.jsp" );
+        rd.forward( request, response );
+        return;
 	}
 
 	/**
@@ -29,9 +34,38 @@ public class StudentController extends HttpServlet {
     protected void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException,
         IOException
     {
-        RequestDispatcher rd = request.getRequestDispatcher( "WEB-INF/JSPs/student/body/student_home.jsp" );
-        rd.forward( request, response );
-        return;
+        doGet( request, response );
 	}
+
+    /**
+     * @param queryStringParam requested query string
+     * @return jsp path to view
+     */
+    private String pageToView( String queryStringParam )
+    {
+        // pages hasn't decided yet
+        String path = null;
+        if( queryStringParam.equals( "home" ) )
+        {
+            path = "WEB-INF/JSPs/admin-tutor/body/admin_home.jsp";
+        }
+        else if( queryStringParam.equals( "flt" ) )
+        {
+            path = "WEB-INF/JSPs/admin-tutor/body/FLT.jsp";
+        }
+        else if( queryStringParam.equals( "modules" ) )
+        {
+            path = "WEB-INF/JSPs/admin-tutor/body/modules.jsp";
+        }
+        else if( queryStringParam.equals( "users" ) )
+        {
+            path = "WEB-INF/JSPs/admin-tutor/body/users.jsp";
+        }
+        else
+        {
+
+        }
+        return path;
+    }
 
 }

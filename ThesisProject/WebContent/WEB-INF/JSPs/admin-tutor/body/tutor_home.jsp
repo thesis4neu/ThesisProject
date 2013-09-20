@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<jsp:include page="../header/admin_navigation_bar.jsp"></jsp:include>
 <title>ALS | Home</title>
 </head>
 <body>
+<jsp:include page="../header/admin_navigation_bar.jsp"></jsp:include>
 
 <!-- Imports -->
 <jsp:include page="../../utilities/imports.jsp"></jsp:include>

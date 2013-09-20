@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.drools.KnowledgeBase;
 import org.drools.logger.KnowledgeRuntimeLogger;
@@ -42,35 +43,42 @@ public class LoginController extends HttpServlet
     protected void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException,
         IOException
     {
-        String username = request.getParameter( "username" ).isEmpty() ? "" : request.getParameter( "username" );
-        String password = request.getParameter( "password" ).isEmpty() ? "" : request.getParameter( "password" );
-        UsersModel userModel = null;
+        HttpSession session = request.getSession();
 
+        String username = request.getParameter( "username" );
+        String password = request.getParameter( "password" );
+
+        UsersModel userModel = null;
         UsersDAO usersDAO = new UsersDAO();
+
         try
         {
             userModel = usersDAO.getAuthentication( username, password );
-            testDrools( userModel );
+
 
             // authenticate user, if exist allocate proper controller for the user
-            if( authenticateUser( userModel ) )
+            if( userModel != null )
             {
+                // test drools
+                testDrools( userModel );
+
+                session.setAttribute( "username", userModel.getUserName() );
+                session.setAttribute( "usertype", userModel.getUserType() );
+
                 allocateProperController( userModel.getUserType(), request, response );
+            }
+            else
+            {
+                request.setAttribute( "errorMessage", "Invalid Username / Password " );
+                doGet( request, response );
             }
         }
         catch( SQLException e )
         {
             e.printStackTrace();
+            request.setAttribute( "errorMessage", "Internal Error" );
+            doGet( request, response );
         }
-    }
-
-    /**
-     * @param userModel model to verify
-     * @return
-     */
-    public boolean authenticateUser( UsersModel userModel )
-    {
-        return ( userModel.getPassword().trim().length() != 0 && userModel.getUserType().trim().length() != 0 && userModel.getUserName().trim().length() != 0 );
     }
 
     /**
@@ -80,7 +88,7 @@ public class LoginController extends HttpServlet
      * @throws IOException
      * @throws ServletException
      */
-    public void allocateProperController( String userType, HttpServletRequest request, HttpServletResponse response )
+    private void allocateProperController( String userType, HttpServletRequest request, HttpServletResponse response )
         throws ServletException, IOException
     {
         RequestDispatcher requestDispatcher = null;
@@ -111,7 +119,7 @@ public class LoginController extends HttpServlet
      * 
      * @param userModel object to be evaluated
      */
-    public void testDrools( UsersModel userModel )
+    private void testDrools( UsersModel userModel )
     {
         IntelligenceManager im = new IntelligenceManager();
         try
